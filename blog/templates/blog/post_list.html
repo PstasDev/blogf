@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Homepage</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                <p>{{ post.content|truncatewords:30 }}</p>
+                <p><strong>Tags:</strong> {{ post.tags.all|join:", " }}</p>
+                <p><strong>Created at:</strong> {{ post.created_at }}</p>
+                <p><strong>Updated at:</strong> {{ post.updated_at }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

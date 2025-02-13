@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content|safe }}</p>
+    <p><strong>Tags:</strong> {{ post.tags.all|join:", " }}</p>
+    <p><strong>Created at:</strong> {{ post.created_at }}</p>
+    <p><strong>Updated at:</strong> {{ post.updated_at }}</p>
+    <h2>Gallery</h2>
+    <ul>
+        {% for image in post.gallery.all %}
+            <li>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}">
+                <p>{{ image.caption }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
